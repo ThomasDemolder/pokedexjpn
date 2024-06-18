@@ -27,7 +27,7 @@
             <div wire:click="showPokemon({{ $pokemon->id }})" class="cursor-pointer bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl">
                 <div class="p-6">
                     <div class="flex justify-center mb-4">
-                        <div class="relative z-10 mx-auto bg-white text-black py-2 px-4 border border-gray-300 rounded-full w-max text-xl font-bold shadow-sm">
+                        <div class="relative z-10 mx-auto bg-white text-black py-2 px-4 border border-gray-300 rounded-full w-max text-xl font-bold shadow-sm {{ $pokemon->legendaire ? 'bg-yellow-300' : '' }}">
                             <h2 class="text-center">{{ $pokemon->nom }}</h2>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
             <div class="bg-white p-8 rounded-lg shadow-lg max-w-2xl w-full max-h-screen overflow-y-auto transform transition-transform duration-300 scale-100 relative">
                 <!-- Nom et images des types -->
                 <div class="flex justify-between mb-4">
-                    <div class="relative z-10 bg-white text-black py-2 px-4 border border-gray-300 rounded-full w-max text-xl font-bold shadow-sm">
+                    <div class="relative z-10 bg-white text-black py-2 px-4 border border-gray-300 rounded-full w-max text-xl font-bold shadow-sm {{ $selectedPokemon->legendaire ? 'bg-yellow-300' : '' }}">
                         <h2 class="text-left">{{ $selectedPokemon->nom }}</h2>
                     </div>
                     <div class="flex space-x-4">

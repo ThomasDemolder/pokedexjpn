@@ -10,56 +10,45 @@ use Livewire\Attributes\Layout;
 class Home extends Component
 {
     #[Layout('layouts.guest')] 
-    public $pokemons;
-    public $types;
-    public $selectedPokemon = null;
     public $search = '';
     public $selectedType = '';
+    public $pokemons;
+    public $selectedPokemon = null;
+    public $types;
 
     public function mount()
     {
-        $this->types = Type::all();
-        $this->pokemons = Pokemon::with(['type1', 'type2'])->get();
-    }
-
-    public function updated($propertyName)
-    {
-        if ($propertyName == 'search') {
-            $this->applySearch();
-        }
+        $this->types = \App\Models\Type::all();
+        $this->pokemons = Pokemon::all();
     }
 
     public function applySearch()
     {
-        $this->filterPokemons();
+        $this->pokemons = Pokemon::where('nom', 'like', '%' . $this->search . '%')->get();
     }
 
     public function applyFilter()
     {
-        $this->filterPokemons();
-    }
-
-    public function filterPokemons()
-    {
-        $query = Pokemon::with(['type1', 'type2']);
-
-        if ($this->search) {
-            $query->where('nom', 'like', $this->search . '%');
-        }
-
         if ($this->selectedType) {
-            $query->where(function ($query) {
-                $query->where('type1_id', $this->selectedType)
-                      ->orWhere('type2_id', $this->selectedType);
-            });
+            $this->pokemons = Pokemon::whereHas('types', function($query) {
+                $query->where('type_id', $this->selectedType);
+            })->get();
+        } else {
+            $this->pokemons = Pokemon::all();
         }
-
-        $this->pokemons = $query->get();
     }
 
-    public function showPokemon($pokemonId)
+    public function showPokemon($id)
     {
-        $this->selectedPokemon = Pokemon::with(['type1', 'type2', 'evolution', 'prevolution', 'generation', 'attaques'])->find($pokemonId);
+        $pokemon = Pokemon::find($id);
+
+        // Convertir la taille en mètres
+        $pokemon->taille = number_format($pokemon->taille / 100, 2);
+
+        // Convertir le poids en kilogrammes
+        $pokemon->poids = number_format($pokemon->poids / 1000, 2);
+
+        $this->selectedPokemon = $pokemon;
     }
 
     public function closePokemonDetail()
