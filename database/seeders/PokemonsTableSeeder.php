@@ -146,6 +146,51 @@ class PokemonsTableSeeder extends Seeder
                 'image' => 'pokemons_images/epinochon.webp',
                 'attaques' => [15, 28, 1]
             ],
+            [
+                'nom' => 'Hydragon',
+                'type1_id' => 4,
+                'type2_id' => 7,
+                'vie' => 300,
+                'taille' => 250,
+                'poids' => 5000,
+                'description' => 'Un puissant dragon de feu et d\'eau.',
+                'legendaire' => true,
+                'evolution_id' => null,
+                'prevolution_id' => null,
+                'generation_id' => 1,
+                'image' => 'pokemons_images/hydragon.webp',
+                'attaques' => [5, 18, 24, 27]
+            ],
+            [
+                'nom' => 'Kurama',
+                'type1_id' => 7,
+                'type2_id' => 17,
+                'vie' => 500,
+                'taille' => 200,
+                'poids' => 2000,
+                'description' => 'Un renard mi feu mi ténèbre',
+                'legendaire' => true,
+                'evolution_id' => null,
+                'prevolution_id' => null,
+                'generation_id' => 2,
+                'image' => 'pokemons_images/kurama.webp',
+                'attaques' => [5, 30, 25]
+            ],
+            [
+                'nom' => 'Psychokami',
+                'type1_id' => 13,
+                'type2_id' => 16,
+                'vie' => 180,
+                'taille' => 150,
+                'poids' => 1500,
+                'description' => 'Un chat au pouvoirs psychiques',
+                'legendaire' => true,
+                'evolution_id' => null,
+                'prevolution_id' => null,
+                'generation_id' => 2,
+                'image' => 'pokemons_images/psychokami.webp',
+                'attaques' => [9, 40]
+            ],
         ];
 
         foreach ($pokemons as $pokemonData) {

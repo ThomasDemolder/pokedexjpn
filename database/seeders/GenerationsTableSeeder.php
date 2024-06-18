@@ -11,6 +11,7 @@ class GenerationsTableSeeder extends Seeder
     {
         $generations = [
             ['nom' => 'Origine'],
+            ['nom' => 'Ombre & Lumière'],
         ];
 
         foreach ($generations as $generation) {
