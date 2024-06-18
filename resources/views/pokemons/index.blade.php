@@ -4,10 +4,10 @@
 <div class="container mx-auto px-4">
     <h1 class="text-2xl font-bold mb-4">Liste des Pokémon</h1>
 
-    <a href="{{ route('pokemons.create') }}" class="btn btn-primary mb-4">Ajouter un nouveau Pokémon</a>
+    <a href="{{ route('pokemons.create') }}" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 mb-4 inline-block">Ajouter un nouveau Pokémon</a>
 
     @if (session('success'))
-        <div class="alert alert-success mt-2">
+        <div class="bg-green-500 text-white font-bold py-2 px-4 rounded mt-2">
             {{ session('success') }}
         </div>
     @endif
@@ -24,12 +24,12 @@
                     </div>
                 </div>
                 <div class="flex items-center">
-                    <a href="{{ route('pokemons.show', $pokemon->id) }}" class="btn btn-info mr-2">Voir</a>
-                    <a href="{{ route('pokemons.edit', $pokemon->id) }}" class="btn btn-secondary mr-2">Modifier</a>
+                    <a href="{{ route('pokemons.show', $pokemon->id) }}" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 mr-2">Voir</a>
+                    <a href="{{ route('pokemons.edit', $pokemon->id) }}" class="bg-yellow-500 text-white font-bold py-2 px-4 rounded hover:bg-yellow-700 mr-2">Modifier</a>
                     <form action="{{ route('pokemons.destroy', $pokemon->id) }}" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer ce Pokémon ?');">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                        <button type="submit" class="bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-red-700">Supprimer</button>
                     </form>
                 </div>
             </div>

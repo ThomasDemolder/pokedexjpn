@@ -5,7 +5,7 @@
     <h1 class="text-3xl font-bold mb-6">Éditer le Pokémon {{ $pokemon->nom }}</h1>
 
     @if ($errors->any())
-        <div class="bg-red-100 text-red-700 p-4 rounded mb-6">
+        <div class="bg-red-500 text-white font-bold py-2 px-4 rounded mb-4">
             <ul class="list-disc list-inside">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -127,12 +127,11 @@
                     </select>
                 @endfor
             </div>
-            <button type="button" class="btn btn-primary mt-2 py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700" id="add-attaque">Ajouter une attaque</button>
         </div>
 
         <div class="flex items-center">
-            <button type="submit" class="btn btn-primary mr-2 py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700">Mettre à jour</button>
-            <a href="{{ route('types.index') }}" class="btn btn-secondary py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700">Annuler</a>
+            <button type="submit" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2">Mettre à jour</button>
+            <a href="{{ route('pokemons.index') }}" class="py-2 px-4 bg-gray-500 text-white rounded hover:bg-gray-700">Annuler</a>
         </div>
     </form>
 </div>

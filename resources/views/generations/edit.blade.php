@@ -5,7 +5,7 @@
     <h1 class="text-2xl font-bold mb-4">Modifier la génération</h1>
 
     @if ($errors->any())
-        <div class="alert alert-danger">
+        <div class="bg-red-500 text-white font-bold py-2 px-4 rounded mb-4">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -24,8 +24,8 @@
         </div>
 
         <div class="flex items-center">
-            <button type="submit" class="btn btn-primary mr-2">Mettre à jour</button>
-            <a href="{{ route('generations.index') }}" class="btn btn-secondary">Annuler</a>
+            <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 mr-2">Mettre à jour</button>
+            <a href="{{ route('generations.index') }}" class="bg-gray-500 text-white font-bold py-2 px-4 rounded hover:bg-gray-700">Annuler</a>
         </div>
     </form>
 </div>

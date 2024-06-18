@@ -4,15 +4,15 @@
 <div class="container mx-auto px-4">
     <h1 class="text-2xl font-bold mb-4">Types</h1>
 
-    <a href="{{ route('types.create') }}" class="btn btn-primary mb-4">Ajouter un nouveau type</a>
+    <a href="{{ route('types.create') }}" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 mb-4 inline-block" dusk="add-new-type-button">Ajouter un nouveau type</a>
 
     @if (session('success'))
-        <div class="alert alert-success mt-2">
+        <div class="bg-green-500 text-white font-bold py-2 px-4 rounded mt-2">
             {{ session('success') }}
         </div>
     @endif
 
-    <div class="grid grid-cols-1 gap-4">
+    <div class="grid grid-cols-1 gap-4" dusk="type-list">
         @foreach ($types as $type)
             <div class="bg-white shadow-md rounded p-4 flex items-center justify-between">
                 <div class="flex items-center">
@@ -23,11 +23,11 @@
                     </div>
                 </div>
                 <div class="flex items-center">
-                    <a href="{{ route('types.edit', $type->id) }}" class="btn btn-secondary mr-2">Modifier</a>
+                    <a href="{{ route('types.edit', $type->id) }}" class="bg-yellow-500 text-white font-bold py-2 px-4 rounded hover:bg-yellow-700 mr-2" dusk="edit-button-{{ $type->id }}">Modifier</a>
                     <form action="{{ route('types.destroy', $type->id) }}" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer ce type ?');">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                        <button type="submit" class="bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-red-700" dusk="delete-button-{{ $type->id }}">Supprimer</button>
                     </form>
                 </div>
             </div>
