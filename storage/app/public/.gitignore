@@ -1,2 +1,4 @@
 *
 !.gitignore
+!public/pokemons_images/
+!public/types_images/
