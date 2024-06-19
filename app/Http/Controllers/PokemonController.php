@@ -187,18 +187,14 @@ class PokemonController extends Controller
 
     public function destroy(Pokemon $pokemon)
     {
-        // Mettre à jour les pokémons qui ont ce pokémon comme évolution
         Pokemon::where('evolution_id', $pokemon->id)->update(['evolution_id' => null]);
     
-        // Mettre à jour les pokémons qui ont ce pokémon comme pré-évolution
         Pokemon::where('prevolution_id', $pokemon->id)->update(['prevolution_id' => null]);
     
-        // Supprimer l'image associée si elle existe
         if ($pokemon->image && Storage::exists('public/' . $pokemon->image)) {
             Storage::delete('public/' . $pokemon->image);
         }
     
-        // Supprimer le Pokémon
         $pokemon->delete();
     
         return redirect()->route('pokemons.index')->with('success', 'Pokémon supprimé avec succès.');
